@@ -3,5 +3,4 @@ class OpenAuth {
     return "jkhkjhasdadshkajhds";
   }
 }
-
 module.exports = OpenAuth;
