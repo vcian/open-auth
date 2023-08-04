@@ -1,8 +1,7 @@
 {
   "name": "open-auth",
   "version": "1.0.0",
-  "description": "open-auth is autherization tool by which we can give access of your api resources to third party use.",
-  "type": "module",
+  "description": "open-auth is authorization tool by which we can give access of your api resources to third party use.",
   "scripts": {
     "lint": "npx eslint .",
     "build": "npx tsc",
