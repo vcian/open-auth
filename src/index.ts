@@ -3,7 +3,7 @@ import {
   createToken,
   verifyClientId,
   verifyClientSecret,
-} from "./utils/logic";
+} from "./lib/auth";
 
 class OpenAuth {
   static generateToken(secret: string) {
