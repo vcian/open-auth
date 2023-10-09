@@ -1,11 +1,12 @@
 import crypto from "node:crypto";
 import cryptoJS from "crypto-js";
+import { IClientIdAndSecret } from "./types";
 
-export const createToken = (secret: string) => {
+export const createToken = (secret: string): string => {
   return crypto.createHash("sha512").update(secret).digest("base64");
 };
 
-export const createClientIdAndSecret = (secret: string) => {
+export const createClientIdAndSecret = (secret: string): IClientIdAndSecret => {
   const timestamp = Date.now().toString();
   const token = crypto
     .createHmac("sha256", secret)
@@ -19,7 +20,7 @@ export const createClientIdAndSecret = (secret: string) => {
   return { clientId, clientSecret };
 };
 
-export const verifyClientId = (timestamp: string, secret: string) => {
+export const verifyClientId = (timestamp: string, secret: string): string => {
   timestamp = cryptoJS.AES.decrypt(timestamp, secret).toString(
     cryptoJS.enc.Utf8
   );
@@ -31,6 +32,6 @@ export const verifyClientId = (timestamp: string, secret: string) => {
   return token;
 };
 
-export const verifyClientSecret = (clientId: string, clientSecret: string) => {
+export const verifyClientSecret = (clientId: string, clientSecret: string): string => {
   return clientId + clientSecret.slice(0, clientSecret.length - 44);
 };

@@ -4,17 +4,18 @@ import {
   verifyClientId,
   verifyClientSecret,
 } from "./lib/auth";
+import { IClientIdAndSecret } from "./lib/types";
 
 class OpenAuth {
-  static generateToken(secret: string) {
+  static generateToken(secret: string): string {
     return createToken(secret);
   }
 
-  generateClientIdAndSecret(secret: string) {
+  generateClientIdAndSecret(secret: string): IClientIdAndSecret {
     return createClientIdAndSecret(secret);
   }
 
-  verifyClient(clientId: string, clientSecret: string, secret: string) {
+  verifyClient(clientId: string, clientSecret: string, secret: string): string | Error {
     const timestamp = clientSecret.slice(
       clientSecret.length - 44,
       clientSecret.length
@@ -34,4 +35,4 @@ class OpenAuth {
   };
 }
 
-module.exports = OpenAuth;
+export default OpenAuth;
