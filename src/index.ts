@@ -6,6 +6,31 @@ import {
 } from "./lib/auth";
 import { IClientIdAndSecret } from "./lib/types";
 
+function CheckParameterTypes(expectedParamTypes: string[]) {
+	return function (
+		target: object,
+		methodName: string,
+		descriptor: PropertyDescriptor
+	) {
+		const originalMethod = descriptor.value;
+
+		descriptor.value = function (...args: unknown[]) {
+			for (let i = 0; i < expectedParamTypes.length; i++) {
+				const expectedType = expectedParamTypes[i];
+				const actualType = typeof args[i];
+
+				if (expectedType !== actualType) {
+					throw new Error(
+						`Parameter type mismatch for parameter ${++i} in ${methodName}. Expected ${expectedType}, but got ${actualType}.`
+					);
+				}
+			}
+
+			return originalMethod.apply(this, args);
+		};
+	};
+}
+
 class OpenAuth {
 	secret: string;
 
