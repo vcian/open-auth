@@ -10,7 +10,7 @@ class OpenAuth {
 	secret: string;
 
 	constructor(secret: string) {
-		if (secret.length < 8 || secret.length > 30)
+		if (secret.length < 8 || secret.length > 32)
 			throw Error("Length of secret should be between 8 - 30");
 		this.secret = secret;
 	}
