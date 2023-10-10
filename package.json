@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "open-auth is authorization tool by which we can give access of your api resources to third party use.",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "npx eslint .",
     "build": "npx tsc",

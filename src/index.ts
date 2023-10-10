@@ -7,7 +7,7 @@ import {
 import { IClientIdAndSecret } from "./lib/types";
 
 class OpenAuth {
-  static generateToken(secret: string): string {
+  private static generateToken(secret: string): string {
     return createToken(secret);
   }
 
@@ -15,7 +15,11 @@ class OpenAuth {
     return createClientIdAndSecret(secret);
   }
 
-  verifyClient(clientId: string, clientSecret: string, secret: string): string | Error {
+  verifyClient(
+    clientId: string,
+    clientSecret: string,
+    secret: string
+  ): string | Error {
     const timestamp = clientSecret.slice(
       clientSecret.length - 44,
       clientSecret.length
