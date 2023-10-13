@@ -5,11 +5,13 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"lint": "npx eslint .",
+		"lint": "eslint \"{src,test,configs}/**/*.ts\"",
+		"lint:fix": "eslint \"{src,test,configs}/**/*.ts\" --fix",
 		"build": "npx tsc",
 		"start": "node dist/index.js",
 		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-		"commit": "cz"
+		"commit": "cz",
+		"prepare": "husky install"
 	},
 	"repository": {
 		"type": "git",
@@ -31,8 +33,11 @@
 		"concurrently": "^8.2.0",
 		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.44.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
 		"nodemon": "^3.0.1",
+		"prettier": "^3.0.3",
 		"typescript": "^5.1.6"
 	},
 	"dependencies": {
