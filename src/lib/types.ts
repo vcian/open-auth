@@ -1,4 +1,4 @@
-export interface IClientIdAndSecret {
+export interface GenerateClientIdAndSecretResponse {
   clientId: string;
   clientSecret: string;
 }
